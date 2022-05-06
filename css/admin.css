@@ -1,0 +1,16 @@
+.navigation {
+    list-style: none;
+    display: flex;
+    border: 2px solid limegreen;
+    padding: 0px;
+}
+
+.navigation li{
+    padding: 5px;
+}
+
+#action {
+    border: 1px solid black;
+    padding: 5px;
+    margin: 10px;
+}

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/login.css">
+
+</head>
+
+<body>
+
+<div class="login-container">
+    <div class="login-box">
+        <h2>Admin Login</h2>
+        <form>
+            <label for="admin-username">Username</label><br>
+            <input type="text" id="admin-username" name="username"><br>
+            <label for="admin-password">Password</label><br>
+            <input type="password" id="admin-password" name="password"><br>
+            <input type="button" id="admin-login-button" value="Login" onclick="checkAdminCredentials()">
+        </form>
+    </div>
+    <div class="login-box">
+        <h2>Staff Login</h2>
+        <form>
+            <label for="staff-username">Username</label><br>
+            <input type="text" id="staff-username" name="username"><br>
+            <label for="staff-password">Password</label><br>
+            <input type="password" id="staff-password" name="password"><br>
+            <input type="button" id="staff-login-button" value="Login" onclick="checkStaffCredentials()">
+        </form>
+    </div>
+</div>
+
+<script src="js/login.js"></script>
+</body>
+
+</html>

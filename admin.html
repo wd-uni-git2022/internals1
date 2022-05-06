@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+<ul class="navigation">
+    <li><button onclick="showInfo('student')">Students</button></li>
+    <li><button onclick="showInfo('staff')">Staff</button></li>
+</ul>
+
+<div id="student-info">
+    <h2>Student List</h2>
+    <div>
+        <button onclick="studentOptionsClick('add')">Add Student</button>
+        <button onclick="studentOptionsClick('update')">Update Student</button>
+        <button onclick="studentOptionsClick('delete')">Delete Student</button>
+    </div>
+    <div id="action" hidden>
+        <div id="action-add" hidden>
+            <h4>Add Student</h4>
+            <form id="addStudentForm" onsubmit="return false">
+                <label for="add-student-id">id</label><br>
+                <input type="text" id="add-student-id" name="studentId" required><br>
+                <label for="add-student-first-name">first name</label><br>
+                <input type="text" id="add-student-first-name" name="firstName" required><br>
+                <label for="add-student-last-name">last name</label><br>
+                <input type="text" id="add-student-last-name" name="lastName"><br>
+                <label for="add-student-dob">dob</label><br>
+                <input type="date" id="add-student-dob" name="dob"><br>
+                <fieldset>
+                    <legend>gender</legend>
+                    <input type="radio" id="add-student-gender-male" name="gender" value="male">
+                    <label for="add-student-gender-male">male</label>
+                    <input type="radio" id="add-student-gender-female" name="gender" value="female">
+                    <label for="add-student-gender-female">female</label>
+                    <input type="radio" id="add-student-gender-other" name="gender" value="other">
+                    <label for="add-student-gender-other">other</label>
+                </fieldset>
+                <label for="add-student-department">student department</label><br>
+                <select id="add-student-department" name="department" required>
+                    <option value="Art">Art</option>
+                    <option value="Computer Science">Computer Science</option>
+                    <option value="Construction">Construction</option>
+                </select><br>
+                <label for="add-student-email-id">email id</label><br>
+                <input type="email" id="add-student-email-id" name="email_id" required><br>
+                <input type="submit" id="student-add" name="student-add" value="Add" onclick="addStudent()">
+            </form>
+        </div>
+
+        <div id="action-update" hidden>
+            <h4>Update Student</h4>
+            <form>
+                <label for="update-student-id">id</label><br>
+                <input type="text" id="update-student-id" name="studentId" required><br>
+                <label for="update-student-first-name">first name</label><br>
+                <input type="text" id="update-student-first-name" name="firstName" required><br>
+                <label for="update-student-last-name">last name</label><br>
+                <input type="text" id="update-student-last-name" name="lastName"><br>
+                <label for="update-student-dob">dob</label><br>
+                <input type="date" id="update-student-dob" name="dob"><br>
+                <fieldset>
+                    <legend>gender</legend>
+                    <input type="radio" id="update-student-gender-male" name="gender" value="male">
+                    <label for="update-student-gender-male">male</label>
+                    <input type="radio" id="update-student-gender-female" name="gender" value="female">
+                    <label for="update-student-gender-female">female</label>
+                    <input type="radio" id="update-student-gender-other" name="gender" value="other">
+                    <label for="update-student-gender-other">other</label>
+                </fieldset>
+                <label for="update-student-department">student department</label><br>
+                <select id="update-student-department" name="department" required>
+                    <option value="Art">Art</option>
+                    <option value="Computer Science">Computer Science</option>
+                    <option value="Construction">Construction</option>
+                </select><br>
+                <label for="update-student-email-id">email id</label><br>
+                <input type="email" id="update-student-email-id" name="email_id" required><br>
+                <input type="submit" id="student-update" name="student-update" value="Update">
+            </form>
+        </div>
+
+        <div id="action-delete" hidden>
+            <h4>Delete Student</h4>
+            <form>
+                <label for="delete-student-id">id</label><br>
+                <input type="text" id="delete-student-id" name="studentId" required><br>
+                <input type="submit" id="student-delete" name="student-delete" value="Delete">
+            </form>
+        </div>
+    </div>
+
+
+    <div>
+        <table id="student-table">
+            <thead>
+            <tr>
+                <th>student_id</th>
+                <th>first_name</th>
+                <th>last_name</th>
+                <th>dob</th>
+                <th>gender</th>
+                <th>department</th>
+                <th>email_id</th>
+            </tr>
+            </thead>
+            <tbody id="student-table-body">
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div id="staff-info" hidden>
+    <h2>Staff List</h2>
+    <div>
+        <button onclick="staffOptionsClick('add')">Add Staff</button>
+        <button onclick="staffOptionsClick('update')">Update Staff</button>
+        <button onclick="staffOptionsClick('delete')">Delete Staff</button>
+    </div>
+    <div id="action-staff" hidden>
+        <div id="action-add-staff" hidden>
+            <h4>Add Staff</h4>
+            <form id="addStaffForm" onsubmit="return false">
+                <label for="add-staff-id">id</label><br>
+                <input type="text" id="add-staff-id" name="staffId" required><br>
+                <label for="add-staff-first-name">first name</label><br>
+                <input type="text" id="add-staff-first-name" name="firstName" required><br>
+                <label for="add-staff-last-name">last name</label><br>
+                <input type="text" id="add-staff-last-name" name="lastName"><br>
+                <label for="add-staff-dob">dob</label><br>
+                <input type="date" id="add-staff-dob" name="dob"><br>
+                <fieldset>
+                    <legend>gender</legend>
+                    <input type="radio" id="add-staff-gender-male" name="gender" value="male">
+                    <label for="add-staff-gender-male">male</label>
+                    <input type="radio" id="add-staff-gender-female" name="gender" value="female">
+                    <label for="add-staff-gender-female">female</label>
+                    <input type="radio" id="add-staff-gender-other" name="gender" value="other">
+                    <label for="add-staff-gender-other">other</label>
+                </fieldset>
+                <label for="add-staff-email-id">email id</label><br>
+                <input type="email" id="add-staff-email-id" name="email_id" required><br>
+                <input type="submit" id="staff-add" name="student-add" value="Add" onclick="addStaff()">
+            </form>
+        </div>
+
+        <div id="action-update-staff" hidden>
+            <h4>Update Staff</h4>
+            <form>
+                <label for="update-staff-id">id</label><br>
+                <input type="text" id="update-staff-id" name="staffId" required><br>
+                <label for="update-staff-first-name">first name</label><br>
+                <input type="text" id="update-staff-first-name" name="firstName" required><br>
+                <label for="update-staff-last-name">last name</label><br>
+                <input type="text" id="update-staff-last-name" name="lastName"><br>
+                <label for="update-staff-dob">dob</label><br>
+                <input type="date" id="update-staff-dob" name="dob"><br>
+                <fieldset>
+                    <legend>gender</legend>
+                    <input type="radio" id="update-staff-gender-male" name="gender" value="male">
+                    <label for="update-staff-gender-male">male</label>
+                    <input type="radio" id="update-staff-gender-female" name="gender" value="female">
+                    <label for="update-staff-gender-female">female</label>
+                    <input type="radio" id="update-staff-gender-other" name="gender" value="other">
+                    <label for="update-staff-gender-other">other</label>
+                </fieldset>
+                <label for="update-staff-email-id">email id</label><br>
+                <input type="email" id="update-staff-email-id" name="email_id" required><br>
+                <input type="submit" id="staff-update" name="staff-update" value="Update">
+            </form>
+        </div>
+
+        <div id="action-delete-staff" hidden>
+            <h4>Delete Staff</h4>
+            <form>
+                <label for="delete-staff-id">id</label><br>
+                <input type="text" id="delete-staff-id" name="staffId" required><br>
+                <input type="submit" id="staff-delete" name="staff-delete" value="Delete">
+            </form>
+        </div>
+    </div>
+
+
+    <div>
+        <table id="staff-table">
+            <thead>
+            <tr>
+                <th>student_id</th>
+                <th>first_name</th>
+                <th>last_name</th>
+                <th>dob</th>
+                <th>gender</th>
+                <th>email_id</th>
+            </tr>
+            </thead>
+            <tbody id="staff-table-body">
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="js/admin.js"></script>
+</body>
+</html>
