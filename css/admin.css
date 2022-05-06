@@ -9,6 +9,12 @@
     padding: 5px;
 }
 
+@media (max-width: 600px) {
+    .navigation {
+        flex-direction: column;
+    }
+}
+
 #action {
     border: 1px solid black;
     padding: 5px;
@@ -24,4 +30,8 @@ tbody tr{
 }
 tbody tr:nth-of-type(even) {
     background-color: darkgrey;
+}
+
+button{
+    background-color: aquamarine;
 }

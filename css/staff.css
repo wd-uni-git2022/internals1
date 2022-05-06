@@ -1,3 +1,8 @@
+button{
+    background-color: aquamarine;
+
+}
+
 .list {
     list-style: none;
     border: 2px solid limegreen;
@@ -10,7 +15,7 @@
 
 .list button{
     border-radius: 0px;
-    width: 20vh;
+    width: 40vh;
 }
 
 table{
@@ -22,4 +27,25 @@ tbody tr{
 }
 tbody tr:nth-of-type(even) {
     background-color: darkgrey;
+}
+
+
+
+
+
+.navigation {
+    list-style: none;
+    display: flex;
+    border: 2px solid limegreen;
+    padding: 0px;
+}
+
+.navigation li{
+    padding: 5px;
+}
+
+@media (max-width: 600px) {
+    .navigation {
+        flex-direction: column;
+    }
 }
