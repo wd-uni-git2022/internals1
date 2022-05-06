@@ -1,0 +1,14 @@
+.list {
+    list-style: none;
+    border: 2px solid limegreen;
+    padding: 0px;
+}
+
+.list li{
+    padding: 5px;
+}
+
+.list button{
+    border-radius: 0px;
+    width: 20vh;
+}
