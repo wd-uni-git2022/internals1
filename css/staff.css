@@ -12,3 +12,14 @@
     border-radius: 0px;
     width: 20vh;
 }
+
+table{
+    border: 1px solid black;
+}
+
+tbody tr{
+    background-color: lightgray;
+}
+tbody tr:nth-of-type(even) {
+    background-color: darkgrey;
+}
