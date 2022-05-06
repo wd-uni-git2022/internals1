@@ -1,4 +1,4 @@
-students = [
+let students = [
     {
         firstName: "joe", lastName: "doe", courses: ["design", "programming1"]
     },
