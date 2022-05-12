@@ -1,3 +1,7 @@
+body {
+    margin: 0px;
+}
+
 button{
     background-color: aquamarine;
 
@@ -31,22 +35,29 @@ tbody tr:nth-of-type(even) {
 }
 
 
-
-
-
 .navigation {
     list-style: none;
     display: flex;
     border: 2px solid limegreen;
     padding: 0px;
+    margin: 0px;
 }
 
-.navigation li{
+.navigation li {
+    padding: 0px;
+
+}
+
+.navigation li button {
     padding: 5px;
 }
 
 @media (max-width: 600px) {
     .navigation {
         flex-direction: column;
+    }
+
+    .navigation li button {
+        width: 100%;
     }
 }
