@@ -2,6 +2,9 @@
 
 html {
     font-family: 'Open Sans', sans-serif;
+    background-color: #ffffff;
+    background: linear-gradient(90deg, #e8b8ff 0%, #5f68cc 100%);
+
 }
 
 body {
@@ -11,9 +14,10 @@ body {
 .navigation {
     list-style: none;
     display: flex;
-    border: 2px solid limegreen;
+    border: 1px solid #000000;
     padding: 0px;
     margin: 0px;
+    background-color: #3f3f3f;
 }
 
 .navigation li {
@@ -22,10 +26,20 @@ body {
 }
 
 .navigation li button {
-    padding: 5px;
+    padding: 3px 20px;
+    font-size: 20px;
+    border: none;
+    text-decoration: none;
+    background-color: #2a2a2a;
+    color: #f1f1f1;
+    transition-duration: 250ms;
 }
 
-@media (max-width: 700px) {
+.navigation li button:hover {
+    background-color: #5b5b5b;
+}
+
+@media (max-width: 1000px) {
     .navigation {
         flex-direction: column;
     }
@@ -35,24 +49,58 @@ body {
     }
 }
 
-#action {
+#action, #action-staff {
     border: 1px solid black;
     padding: 5px;
     margin: 10px;
 }
 
 table {
-    border: 1px solid black;
+    border-collapse: collapse;
+
 }
 
+td {
+    padding: 2px 20px;
+}
+
+thead {
+    background-color: #3f3f3f;
+    color: #f1f1f1;
+}
+
+
 tbody tr {
-    background-color: lightgray;
+    background-color: #e0e0e0;
+
 }
 
 tbody tr:nth-of-type(even) {
-    background-color: darkgrey;
+    background-color: #efefef;
 }
 
-button {
-    background-color: aquamarine;
+#content {
+    border-style: none;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+
+    background-color: #fcfcfc;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#content button, input[type=submit] {
+    background-color: #00c000;
+    color: #ffffff;
+    border-radius: 5px;
+    padding: 7px 20px;
+    border: none;
+    text-decoration: none;
+    transition-duration: 250ms;
+    font-weight: bold;
+    margin: 10px 2px;
+}
+
+#content button:hover {
+    background-color: #00d200;
 }

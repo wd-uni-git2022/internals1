@@ -16,7 +16,6 @@ html {
 
 
 .login-box {
-    border-color: black;
     border-style: none;
     border-radius: 10px;
     padding: 20px;
@@ -31,19 +30,24 @@ html {
 }
 
 .login-box input[type=button] {
-    background-color: #00e100;
+    background-color: #00c000;
+    color: #ffffff;
     border-radius: 5px;
-    padding: 7px;
+    padding: 7px 20px;
+    margin: 10px 2px 0px;
     border: none;
     text-decoration: none;
     transition-duration: 250ms;
+    font-weight: bold;
+
+
 }
 .login-box input[type=button]:hover {
-    background-color: #00cb00;
+    background-color: #00d200;
 }
 
 
-@media (max-width: 700px) {
+@media (max-width: 1000px) {
     .login-container {
         flex-direction: column;
         align-items: center;
