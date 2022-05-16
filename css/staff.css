@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
+
+html {
+    font-family: 'Open Sans', sans-serif;
+}
+
 body {
     margin: 0px;
 }
@@ -52,7 +58,7 @@ tbody tr:nth-of-type(even) {
     padding: 5px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
     .navigation {
         flex-direction: column;
     }
