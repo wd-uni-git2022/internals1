@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Staff</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
     <link rel="stylesheet" href="css/staff.css">
 </head>
 <body>
@@ -14,36 +14,39 @@
     </li>
 </ul>
 
-<div>
-    <h3>Courses</h3>
+<div id="content">
     <div>
-        <ul class="list">
-            <li>
-                <button onclick="courseInfo('programming1')">Programming1</button>
-            </li>
-            <li>
-                <button onclick="courseInfo('math')">Math</button>
-            </li>
-            <li>
-                <button onclick="courseInfo('design')">Design</button>
-            </li>
-        </ul>
+        <h2>Courses</h2>
+        <div>
+            <ul class="list">
+                <li>
+                    <button onclick="courseInfo('programming1')">Programming1</button>
+                </li>
+                <li>
+                    <button onclick="courseInfo('math')">Math</button>
+                </li>
+                <li>
+                    <button onclick="courseInfo('design')">Design</button>
+                </li>
+            </ul>
+        </div>
     </div>
-</div>
 
-<div id="studentList" hidden>
-    <h4>Students</h4>
-    <table id="student-table">
-        <thead>
-        <tr>
-            <th>first_name</th>
-            <th>last_name</th>
-        </tr>
-        </thead>
-        <tbody id="student-table-body">
 
-        </tbody>
-    </table>
+    <div id="studentList" hidden>
+        <h4>Students</h4>
+        <table id="student-table">
+            <thead>
+            <tr>
+                <th>first_name</th>
+                <th>last_name</th>
+            </tr>
+            </thead>
+            <tbody id="student-table-body">
+
+            </tbody>
+        </table>
+    </div>
 </div>
 <script src="js/staff.js"></script>
 </body>
