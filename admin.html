@@ -96,7 +96,12 @@
         </div>
     </div>
 
-
+    <div>
+        <label for="department">Department: </label>
+        <select name="department" id="department" onchange="applyFilters()"> </select>
+        <label for="semester">Semester: </label>
+        <select name="semester" id="semester" onchange="applyFilters()"> </select>
+    </div>
     <div style="overflow-x:auto;">
         <table id="student-table">
             <thead>
@@ -108,6 +113,7 @@
                 <th>gender</th>
                 <th>department</th>
                 <th>email_id</th>
+                <th>joining_date</th>
             </tr>
             </thead>
             <tbody id="student-table-body">
