@@ -107,20 +107,27 @@ function loadStaffList() {
 
 }
 
-let maxDate;
-let minDate;
+let maxDOB;
+let minDOB;
+let minJoiningDate;
 function setup(){
     // dob validation
-    let datepicker = document.getElementById("add-student-dob");
+    let dobDatepicker = document.getElementById("add-student-dob");
 
-    maxDate = new Date();
-    maxDate.setFullYear(maxDate.getFullYear()-17);
+    maxDOB = new Date();
+    maxDOB.setFullYear(maxDOB.getFullYear()-17);
 
-    minDate = new Date();
-    minDate.setFullYear(minDate.getFullYear()-60);
+    minDOB = new Date();
+    minDOB.setFullYear(minDOB.getFullYear()-60);
 
-    datepicker.max = maxDate.toISOString().split("T")[0];
-    datepicker.min = minDate.toISOString().split("T")[0];
+    dobDatepicker.max = maxDOB.toISOString().split("T")[0];
+    dobDatepicker.min = minDOB.toISOString().split("T")[0];
+
+    // joining date validation
+    let joiningDateDatepicker = document.getElementById("add-student-joining-date");
+    minJoiningDate = new Date();
+    minJoiningDate.setFullYear(2015);
+    joiningDateDatepicker.min = minJoiningDate.toISOString().split("T")[0];
 
 }
 
@@ -184,11 +191,19 @@ function addStudent() {
         return;
     }
 
-    if(studentData.dob < maxDate || studentData.dob > minDate){
-        console.error("date error");
-        alert("date error");
+    if(studentData.dob < maxDOB || studentData.dob > minDOB){
+        console.error("dob error");
+        alert("dob error");
         return;
     }
+
+    if(studentData.joiningDate < minJoiningDate){
+        console.error("joining date error");
+        alert("joining date error");
+        return;
+    }
+
+
 
     studentList.push(studentData);
     loadStudentList();
