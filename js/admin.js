@@ -107,6 +107,24 @@ function loadStaffList() {
 
 }
 
+let maxDate;
+let minDate;
+function setup(){
+    // dob validation
+    let datepicker = document.getElementById("add-student-dob");
+
+    maxDate = new Date();
+    maxDate.setFullYear(maxDate.getFullYear()-17);
+
+    minDate = new Date();
+    minDate.setFullYear(minDate.getFullYear()-60);
+
+    datepicker.max = maxDate.toISOString().split("T")[0];
+    datepicker.min = minDate.toISOString().split("T")[0];
+
+}
+
+setup();
 loadStudentList();
 loadStaffList();
 
@@ -162,7 +180,13 @@ function addStudent() {
 
     console.log(studentData);
     if (!studentData.studentId || !studentData.firstName || !studentData.email_id) {
-        console.log("required data is missing");
+        console.error("required data is missing");
+        return;
+    }
+
+    if(studentData.dob < maxDate || studentData.dob > minDate){
+        console.error("date error");
+        alert("date error");
         return;
     }
 
@@ -193,7 +217,7 @@ function showInfo(type) {
     if(type === TYPE_STUDENT){
         staffInfo.hidden = true;
         studentInfo.hidden = false;
-    }else if(type == TYPE_STAFF){
+    }else if(type === TYPE_STAFF){
         studentInfo.hidden = true;
         staffInfo.hidden = false;
     }
