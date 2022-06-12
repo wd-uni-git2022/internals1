@@ -138,6 +138,8 @@ let minJoiningDate;
 function setup() {
     // dob validation
     let dobDatepicker = document.getElementById("add-student-dob");
+    let dobDatepickerUpdate = document.getElementById("update-student-dob");
+
 
     maxDOB = new Date();
     maxDOB.setFullYear(maxDOB.getFullYear() - 17);
@@ -148,11 +150,19 @@ function setup() {
     dobDatepicker.max = maxDOB.toISOString().split("T")[0];
     dobDatepicker.min = minDOB.toISOString().split("T")[0];
 
+    dobDatepickerUpdate.max = maxDOB.toISOString().split("T")[0];
+    dobDatepickerUpdate.min = minDOB.toISOString().split("T")[0];
+
     // joining date validation
     let joiningDateDatepicker = document.getElementById("add-student-joining-date");
     minJoiningDate = new Date();
     minJoiningDate.setFullYear(2015);
     joiningDateDatepicker.min = minJoiningDate.toISOString().split("T")[0];
+
+    let joiningDateDatepickerUpdate = document.getElementById("update-student-joining-date");
+    minJoiningDate = new Date();
+    minJoiningDate.setFullYear(2015);
+    joiningDateDatepickerUpdate.min = minJoiningDate.toISOString().split("T")[0];
 
     // dropdown department
     let dropdownDepartment = document.getElementById("department");
@@ -171,7 +181,7 @@ function setup() {
     let defaultOptionSemester = document.createElement("option");
     defaultOptionSemester.text = DEFAULT_SEMESTER_SELECTION;
     dropdownSemester.add(defaultOptionSemester)
-    Object.keys(semesters).forEach(semester =>{
+    Object.keys(semesters).forEach(semester => {
         let option = document.createElement("option");
         option.value = semester;
         option.text = semester;
@@ -205,9 +215,9 @@ function filterBySemester(students) {
         return students.filter(student => {
             let joiningDateMonth = student.joiningDate.split("-")[1]; // or getMonth()
             console.log(joiningDateMonth)
-            if(semesterStart > semesterEnd){
+            if (semesterStart > semesterEnd) {
                 return joiningDateMonth >= semesterStart || joiningDateMonth <= semesterEnd;
-            }else{
+            } else {
                 return joiningDateMonth >= semesterStart && joiningDateMonth <= semesterEnd;
             }
 
@@ -265,6 +275,33 @@ function staffOptionsClick(buttonId) {
     action.hidden = false;
 }
 
+function studentDataValidation(formData, studentData){
+
+    if (!formData.get("studentId") || !formData.get("firstName") || !formData.get("email_id")) {
+        console.error("required data is missing");
+        return false;
+    }
+
+
+    if (Date.parse(formData.get("dob")) > maxDOB || Date.parse(formData.get("dob")) < minDOB) {
+        console.error("dob error");
+        alert("dob error");
+        return false;
+    }
+
+    if (Date.parse(formData.get("joiningDate")) < minJoiningDate) {
+        console.error("joining date error");
+        alert("joining date error");
+        return false;
+    }
+
+    formData.forEach(function (value, key) {
+        console.log(key + ": " + value);
+        studentData[key] = value
+    });
+    console.log(studentData);
+    return true;
+}
 
 function addStudent() {
     let addForm = document.forms.addStudentForm;
@@ -272,28 +309,21 @@ function addStudent() {
     let formData = new FormData(addForm);
 
     let studentData = {};
-    formData.forEach(function (value, key) {
-        console.log(key + ": " + value);
-        studentData[key] = value
-    });
 
-    console.log(studentData);
-    if (!studentData.studentId || !studentData.firstName || !studentData.email_id) {
-        console.error("required data is missing");
+    let studentId = formData.get("studentId");
+
+    if(studentId === ""){
+        alert("Enter a studentId");
         return;
     }
 
-    if (studentData.dob < maxDOB || studentData.dob > minDOB) {
-        console.error("dob error");
-        alert("dob error");
+    if(studentList.some(student => student.studentId == studentId)){
+        alert("studentId already exists");
         return;
     }
 
-    if (studentData.joiningDate < minJoiningDate) {
-        console.error("joining date error");
-        alert("joining date error");
+    if(!studentDataValidation(formData, studentData))
         return;
-    }
 
 
     studentList.push(studentData);
@@ -303,10 +333,47 @@ function addStudent() {
 
 function updateStudent() {
     console.log("update student");
+    let addForm = document.forms.updateStudentForm;
+    let formData = new FormData(addForm);
+
+    let studentId = formData.get("studentId");
+    console.log("studentId: " + studentId)
+    if (studentId === "") {
+        alert("Enter a studentId");
+        return;
+    }
+
+    if (studentList.some(student => student.studentId == studentId)) {
+
+        let student = studentList.find(student => student.studentId == studentId);
+
+        if(studentDataValidation(formData, student)){
+            loadStudentList(studentList);
+        }
+
+    } else {
+        alert("Given studentId doesn't exist");
+    }
 }
 
 function deleteStudent() {
     console.log("delete student");
+    let addForm = document.forms.deleteStudentForm;
+    let formData = new FormData(addForm);
+    let studentId = formData.get("studentId");
+    console.log("studentId: " + studentId)
+    if (studentId === "") {
+        alert("Enter a studentId");
+        return;
+    }
+
+    if (studentList.some(student => student.studentId == studentId)) {
+        studentList = studentList.filter(student => student.studentId != studentId);
+        loadStudentList(studentList);
+    } else {
+        alert("Given studentId doesn't exist");
+    }
+
 }
 
 
