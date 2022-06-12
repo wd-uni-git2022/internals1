@@ -205,7 +205,12 @@ function filterBySemester(students) {
         return students.filter(student => {
             let joiningDateMonth = student.joiningDate.split("-")[1]; // or getMonth()
             console.log(joiningDateMonth)
-            return joiningDateMonth >= semesterStart && joiningDateMonth <= semesterEnd;
+            if(semesterStart > semesterEnd){
+                return joiningDateMonth >= semesterStart || joiningDateMonth <= semesterEnd;
+            }else{
+                return joiningDateMonth >= semesterStart && joiningDateMonth <= semesterEnd;
+            }
+
         });
     }
 }
