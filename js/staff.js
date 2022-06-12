@@ -58,7 +58,8 @@ let students = [
 
 let departments = [
     "Art",
-    "Computer Science"
+    "Computer Science",
+    "Construction"
 ];
 
 let semesters = {

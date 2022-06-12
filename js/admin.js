@@ -62,7 +62,8 @@ let staffList = [
 ];
 let departments = [
     "Art",
-    "Computer Science"
+    "Computer Science",
+    "Construction"
 ];
 let semesters = {
     Winter: {
