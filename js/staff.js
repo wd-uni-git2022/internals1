@@ -166,6 +166,9 @@ setup();
 
 function courseInfo(name) {
 
+    document.getElementById("department").value = DEFAULT_DEPARTMENT_SELECTION;
+    document.getElementById("semester").value = DEFAULT_SEMESTER_SELECTION;
+
     selectedCourse = name;
     document.getElementById("studentList").hidden = false;
 
